@@ -18,6 +18,13 @@
             <span class="meta">Posted by
               <a href="#">Start Bootstrap</a>
               on <%= date %></span>
+              <br>
+              
+                <div class="control-group">
+                  <a href="/post/update_post/<%= post._id %>"><button type="submit" class="btn btn-info" id="updateMessageButton">Update</button></a>
+                  <a href="/posts/<%= post._id %>?_method=DELETE"><button type="submit" class="btn btn-danger" id="deleteMessageButton">Delete</button></a>
+                </div>
+              
           </div>
         </div>
       </div>
@@ -65,11 +72,13 @@
           <p>Placeholder text by
             <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
             <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
-        </div>
+            
+        </div>   
       </div>
     </div>
   </article>
 
+  <hr>
   <hr>
 
     <%- include('partials/_footer.ejs') -%>
