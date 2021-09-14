@@ -3,6 +3,7 @@ const path = require('path');
 const ejs = require('ejs');
 const Post = require('./models/Post');
 const mongoose = require('mongoose');
+const moment = require('moment');
 const app = express();
 const port = 3000;
 
@@ -29,8 +30,21 @@ app.get('/about', (req, res) => {
   res.render('about');
 });
 
+app.get('/post/:id', async (req, res) => {
+  const post = await Post.findById(req.params.id);
+  let date = moment(post.dateCreated).format('LLL');
+  res.render('post', {
+    post,
+    date,
+  });
+});
+
 app.get('/add_post', (req, res) => {
   res.render('add_post');
+});
+
+app.get('/post', (req, res) => {
+  res.render('post');
 });
 
 app.post('/posts', async (req, res) => {
