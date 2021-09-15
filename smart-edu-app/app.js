@@ -1,9 +1,17 @@
 const express = require('express');
+const ejs = require('ejs');
 const pageController = require('./controllers/pageControllers');
-
+const pageRoute = require('./routes/pageRoute');
 const app = express();
 
-app.get('/', pageController.getIndexPage);
+//Template Engine
+app.set('view engine', 'ejs');
+
+//Middlewares
+app.use(express.static('public'));
+
+//Routes
+app.use('/', pageRoute);
 
 const port = 3000;
 app.listen(port, () => {
