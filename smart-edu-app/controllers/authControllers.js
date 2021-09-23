@@ -25,8 +25,8 @@ exports.loginUser = (req, res) => {
       if (user) {
         bcrypt.compare(password, user.password, (err, samePass) => {
           if (samePass) {
-            // TODO: User Session
-            res.status(200).send('You are logged in.');
+            req.session.userID = user._id;
+            res.status(200).redirect('/');
           }
         });
       }
